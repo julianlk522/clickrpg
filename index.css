@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     text-align: center;
+    font-family: 'Montserrat', sans-serif;
 }
 
 body, html {
@@ -11,11 +12,30 @@ body, html {
 }
 
 #wrapper {
-    background-color: green;
+    background: black;
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+/* Game Area */
+
+
+
+#gameArea {
+    width: 90%;
+    height: 90%;
+    background-color: green;
+    color: white;
+    border: 2px solid white;
+    border-radius: 5%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 #title {
@@ -26,10 +46,27 @@ body, html {
     margin: 3rem;
 }
 
+hr {
+    width: 80%;
+}
+
 #buttonArea {
     margin: 5rem;
 }
 
 #button {
-    margin: 1rem;
+    margin-bottom: 3rem;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: white;
+    color: green;
+    transition: 0.2s ease;
+}
+
+#button:hover {
+    cursor: pointer;
+    background-color: gold;
+    box-shadow: 0 0 5px gold,
+                0 0 20px gold;
 }
