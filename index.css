@@ -26,16 +26,17 @@ body, html {
 
 
 #gameArea {
-    width: 90%;
+    width: 80%;
     height: 90%;
-    background-color: green;
+    background-color: #194cff;
     color: white;
-    border: 2px solid white;
-    border-radius: 5%;
+    /* border: 1px solid white; */
+    border-radius: 3rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    /* opacity: 0.5; */
 }
 
 #title {
@@ -46,12 +47,17 @@ body, html {
     margin: 3rem;
 }
 
+#tenTitle {
+    display: none;
+}
+
 hr {
     width: 80%;
 }
 
 #buttonArea {
     margin: 5rem;
+    width: 50%;
 }
 
 #button {
@@ -61,6 +67,7 @@ hr {
     border-radius: 0.5rem;
     background-color: white;
     color: green;
+    tranform: scale(1);
     transition: 0.2s ease;
 }
 
