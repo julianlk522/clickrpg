@@ -1,38 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Click RPG</title>
-    <link rel="stylesheet" href="index.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
-</head>
-<body>
-    <div id="wrapper">
-        <div id="gameArea">
-            <div id="title">
-                <div id="startTitle">
-                    <h1>Welcome to Click RPG</h1>
-                    <h2>The more you click the more you win!</h2>
-                </div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Click RPG</title>
+        <link rel="stylesheet" href="index.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap"
+            rel="stylesheet"
+        />
+    </head>
 
-                <div id="tenTitle">
-                    <h2>Okay you get the idea... but what happens if you continue?</h2>
+    <body>
+        <div id="wrapper">
+            <div id="gameArea">
+                <div id="title">
+                    <div id="startTitle">
+                        <h1>Welcome to the Click Game!</h1>
+                        <h2>How many can you click before it's too late?</h2>
+                    </div>
                 </div>
-            </div>
-            <hr />
-            <div id="buttonArea">
-                <button id="button">
-                    <span id="currentCount">Click me to start playing!</span>
-                </button>
+                <div id="timerArea">
+                    <h3 id="timer">5:00</h3>
+                </div>
+                <hr />
+                <div id="buttonArea">
+                    <button id="button">
+                        <span id="currentCount"
+                            >Click me to start playing!</span
+                        >
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
 
-    <script src="script.js" defer></script>
-
-</body>
+        <script src="script.js" defer></script>
+    </body>
 </html>
