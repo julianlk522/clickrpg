@@ -47,15 +47,9 @@ html {
     margin: 3rem;
 }
 
-/* #startTitle {
-} */
-
-#tenTitle {
-    display: none;
-}
-
 #timerArea {
     margin-bottom: 6rem;
+    width: 50%;
 }
 
 hr {
