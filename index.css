@@ -35,34 +35,50 @@ html {
 }
 
 #title {
-    margin: 3rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    opacity: 1;
 }
 
-#title h1,
-#title h2 {
-    margin: 3rem;
+#title h1 {
+    margin: 4rem;
+}
+
+#subtitle {
+    margin-bottom: 6rem;
+}
+
+#gameOver {
+    display: none;
+    margin-bottom: 4rem;
 }
 
 #timerArea {
-    margin-bottom: 6rem;
+    margin: 4rem;
     width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#timer {
+    height: 100%;
 }
 
 hr {
+    margin: 2rem;
     width: 80%;
+    opacity: 1;
 }
 
 #buttonArea {
-    margin: 5rem;
+    margin: 4rem;
     width: 50%;
 }
 
 #button {
-    margin-bottom: 3rem;
     padding: 0.5rem;
     border: none;
     border-radius: 0.5rem;
