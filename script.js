@@ -29,6 +29,7 @@ const buildStartTimeMessage = () => {
 	let startingMinutes = Math.floor(secondsPerRound / 60)
 	let startingSeconds = secondsPerRound % 60
 
+	//	calculate starting message
 	const startTimeMessage = !startingMinutes
 		? startingSeconds === 1
 			? '1 second until time is up!'
@@ -46,7 +47,7 @@ const buildStartTimeMessage = () => {
 	timerElement.innerHTML = startTimeMessage
 }
 
-//  load starting time
+//  starting message on load
 window.onload = () => {
 	buildStartTimeMessage()
 }
@@ -61,21 +62,24 @@ const gameOver = () => {
 	mainTitleElement.innerHTML = 'Game over!'
 }
 
-//  handle timer
-function handleTimer() {
+//  start game
+function newGame() {
+	//	game time reference
 	let gameTimeLeft = secondsPerRound
 	newTimeCalcs(gameTimeLeft)
+
+	//	remove unneeded dom elements for game and adjust title
 	subTitleElement.style.display = 'none'
 	hrElement.style.display = 'none'
 	mainTitleElement.innerHTML = 'Keep clicking!'
 	
+	//	timer loop
 	const timerInterval = setInterval(() => {
 		//  decrement totalSecondsLeft
 		gameTimeLeft--
 
 		//  game over if no time left
 		if (gameTimeLeft <= 0) {
-			gameTimeLeft = 0
 			gameOver()
 			return clearInterval(timerInterval)
 		}
@@ -86,26 +90,27 @@ function handleTimer() {
 
 //	replay
 const replay = () => {
+	//	reset count
 	count = 1
+
+	//	reset dom elements
 	currentCountElement.innerHTML = `Clicks: ${count}`
 	gameOverElement.style.display = 'none'
 	buttonElement.style.display = 'block'
 	replayButtonElement.style.display = 'none'
-	handleTimer()
+
+	newGame()
 }
 
 //  button click handler
 buttonElement.addEventListener('click', () => {
 	if (count === 0) {
-		handleTimer()
+		newGame()
 	}
 
 	count += 1
 
 	currentCountElement.innerHTML = `Clicks: ${count}`
-	// if ((currentCountElement.innerHTML = 'Click me to start playing!')) {
-		
-	// }
 })
 
 //  button hover effects
@@ -115,6 +120,14 @@ buttonElement.addEventListener('mousedown', () => {
 
 buttonElement.addEventListener('mouseup', () => {
 	buttonElement.style.transform = 'scale(1)'
+})
+
+replayButtonElement.addEventListener('mousedown', () => {
+	replayButtonElement.style.transform = 'scale(0.9)'
+})
+
+replayButtonElement.addEventListener('mouseup', () => {
+	replayButtonElement.style.transform = 'scale(1)'
 })
 
 replayButtonElement.addEventListener('click', replay)
