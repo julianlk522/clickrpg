@@ -76,9 +76,13 @@ hr {
 #buttonArea {
     margin: 4rem;
     width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-#button {
+.button {
+    margin: 1.5rem;
     padding: 0.5rem;
     border: none;
     border-radius: 0.5rem;
@@ -88,8 +92,12 @@ hr {
     transition: 0.2s ease;
 }
 
-#button:hover {
+.button:hover {
     cursor: pointer;
     background-color: gold;
     box-shadow: 0 0 5px gold, 0 0 20px gold;
+}
+
+#replay {
+    display: none;
 }
