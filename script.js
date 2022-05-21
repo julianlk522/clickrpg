@@ -1,8 +1,11 @@
 //  game variables
 let count = 0
-let secondsPerRound = 5
+let secondsPerRound = 20
+
+
 
 // dom selectors
+const gameAreaElement = document.getElementById('gameArea')
 const buttonElement = document.getElementById('button')
 const currentCountElement = document.getElementById('currentCount')
 const mainTitleElement = document.querySelector('h1')
@@ -12,18 +15,16 @@ const hrElement = document.querySelector('hr')
 const gameOverElement = document.getElementById('gameOver')
 const replayButtonElement = document.getElementById('replay')
 
-//  calc time in mins/secs and update html
-const newTimeCalcs = (gameTime) => {
-	//  minutes and seconds calcs
-	let minutes = Math.floor(gameTime / 60)
-	let seconds = gameTime % 60
-	seconds = seconds < 10 ? '0' + seconds : seconds
-	
-	//  update html during game
-	timerElement.innerHTML = `${minutes} : ${seconds}`
+
+
+//  starting message on load
+window.onload = () => {
+	buildStartTimeMessage()
 }
 
-// parse time left and return formatted start message
+
+
+// parse secondsPerRound and return formatted start message
 const buildStartTimeMessage = () => {
 	//  starting minutes and seconds calcs
 	let startingMinutes = Math.floor(secondsPerRound / 60)
@@ -47,14 +48,70 @@ const buildStartTimeMessage = () => {
 	timerElement.innerHTML = startTimeMessage
 }
 
-//  starting message on load
-window.onload = () => {
-	buildStartTimeMessage()
+
+
+//  calc time in mins/secs and update html
+const newTimeCalcs = (gameTime) => {
+	
+	//  minutes and seconds calcs
+	let minutes = Math.floor(gameTime / 60)
+	let seconds = gameTime % 60
+	seconds = seconds < 10 ? '0' + seconds : seconds
+	
+	//  update html during game
+	timerElement.innerHTML = `${minutes} : ${seconds}`
 }
+
+
+
+//	randomly place click button
+const randomlyPlaceButton = () => {
+	
+	//	no-go zone (middle 33%)
+	const noGoLow = 50 - (33 / 2)
+	const noGoHigh = 50 + (33 / 2)
+	
+	//	func to calc a value that is between 10%-90% and not in the no-go zone
+	const randomTopOrLeftFunc = () => {
+		
+		//	random 10%-90%
+		let randomCalcedTopOrLeft = Math.floor((Math.random() * 80)) + 10
+		
+		//	return results outside the no-go zone
+		if (randomCalcedTopOrLeft < noGoLow || randomCalcedTopOrLeft > noGoHigh) {
+			console.log(randomCalcedTopOrLeft, 'success')
+			return randomCalcedTopOrLeft
+
+		//	call the calc function again if results are within the no-go zone	
+		} else {
+			console.log(randomCalcedTopOrLeft, `within no go zone (${noGoLow} to ${noGoHigh})`)
+			return randomTopOrLeftFunc()
+		}
+	}
+
+	//	use func to generate top and left
+	let randomTop = randomTopOrLeftFunc()
+	let randomLeft = randomTopOrLeftFunc()
+	console.log('random top:', randomTop)
+	console.log('random left:', randomLeft)
+
+	//	change to pos: absolute and assign calced position
+	if (buttonElement.style.position !== 'absolute') {
+		buttonElement.style.position = 'absolute'
+	}
+	buttonElement.style.top = `${randomTop}%`
+	buttonElement.style.left = `${randomLeft}%`
+}
+
+
 
 //	game over
 const gameOver = () => {
+
+	//	display score
 	gameOverElement.innerHTML = `Your score was ${count}`
+
+	//	set dom elements to game over screen
 	gameOverElement.style.display = 'block'
 	replayButtonElement.style.display = 'block'
 	buttonElement.style.display = 'none'
@@ -62,8 +119,11 @@ const gameOver = () => {
 	mainTitleElement.innerHTML = 'Game over!'
 }
 
-//  start game
+
+
+//  game start
 function newGame() {
+
 	//	game time reference
 	let gameTimeLeft = secondsPerRound
 	newTimeCalcs(gameTimeLeft)
@@ -72,9 +132,13 @@ function newGame() {
 	subTitleElement.style.display = 'none'
 	hrElement.style.display = 'none'
 	mainTitleElement.innerHTML = 'Keep clicking!'
+
+	//	reset button element position to center first button
+	buttonElement.style.position = 'static'
 	
 	//	timer loop
 	const timerInterval = setInterval(() => {
+		
 		//  decrement totalSecondsLeft
 		gameTimeLeft--
 
@@ -88,8 +152,11 @@ function newGame() {
 	}, 1000)
 }
 
+
+
 //	replay
 const replay = () => {
+	
 	//	reset count
 	count = 1
 
@@ -102,18 +169,24 @@ const replay = () => {
 	newGame()
 }
 
-//  button click handler
+
+
+//  button click handlers
 buttonElement.addEventListener('click', () => {
 	if (count === 0) {
 		newGame()
-	}
+	} else randomlyPlaceButton()
 
 	count += 1
 
 	currentCountElement.innerHTML = `Clicks: ${count}`
 })
 
-//  button hover effects
+replayButtonElement.addEventListener('click', replay)
+
+
+
+//  button click resize effects
 buttonElement.addEventListener('mousedown', () => {
 	buttonElement.style.transform = 'scale(0.9)'
 })
@@ -129,5 +202,3 @@ replayButtonElement.addEventListener('mousedown', () => {
 replayButtonElement.addEventListener('mouseup', () => {
 	replayButtonElement.style.transform = 'scale(1)'
 })
-
-replayButtonElement.addEventListener('click', replay)
