@@ -36,12 +36,13 @@ html {
     height: 90%;
     background-color: var(--darkIndigo);
     color: var(--lemonChiffon);
-    border-radius: 3rem;
+    border-radius: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 }
 
 #title {
