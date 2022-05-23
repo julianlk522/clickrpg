@@ -6,6 +6,15 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+:root {
+    --darkIndigo: hsl(269, 100%, 20%);
+    --indigo: hsl(269, 100%, 35%);
+    --violet: hsl(269, 100%, 50%);
+    --lemonChiffon: hsl(51, 100%, 88%);
+    --gold: hsl(51, 100%, 50%);
+    --olive: hsl(60, 100%, 20%);
+}
+
 body,
 html {
     width: 100%;
@@ -13,7 +22,7 @@ html {
 }
 
 #wrapper {
-    background: black;
+    background: linear-gradient(var(--violet), var(--indigo), var(--violet));
     height: 100%;
     display: flex;
     justify-content: center;
@@ -25,8 +34,8 @@ html {
 #gameArea {
     width: 95%;
     height: 90%;
-    background-color: #194cff;
-    color: white;
+    background-color: var(--darkIndigo);
+    color: var(--lemonChiffon);
     border-radius: 3rem;
     display: flex;
     flex-direction: column;
@@ -86,16 +95,16 @@ hr {
     padding: 0.5rem;
     border: none;
     border-radius: 0.5rem;
-    background-color: white;
-    color: green;
+    background-color: var(--lemonChiffon);
+    color: var(--indigo);
     tranform: scale(1);
     transition: 0.2s ease;
 }
 
 .button:hover {
     cursor: pointer;
-    background-color: gold;
-    box-shadow: 0 0 5px gold, 0 0 20px gold;
+    background-color: var(--gold);
+    box-shadow: 0 0 5px var(--gold), 0 0 20px var(--gold);
 }
 
 #replay {
