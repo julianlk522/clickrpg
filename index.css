@@ -8,6 +8,7 @@
 
 :root {
     --darkIndigo: hsl(269, 100%, 20%);
+    --darkIndigoTransparent: rgba(49, 0, 102, 0.89);
     --indigo: hsl(269, 100%, 35%);
     --violet: hsl(269, 100%, 50%);
     --lemonChiffon: hsl(51, 100%, 88%);
@@ -22,7 +23,7 @@ html {
 }
 
 #wrapper {
-    background: linear-gradient(var(--violet), var(--indigo), var(--violet));
+    background-image: url("bg.svg");
     height: 100%;
     display: flex;
     justify-content: center;
@@ -34,7 +35,7 @@ html {
 #gameArea {
     width: 95%;
     height: 90%;
-    background-color: var(--darkIndigo);
+    background-color: var(--darkIndigoTransparent);
     color: var(--lemonChiffon);
     border-radius: 2rem;
     display: flex;
