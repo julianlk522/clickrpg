@@ -1,69 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Click RPG</title>
-        <link rel="stylesheet" href="index.css" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap"
-            rel="stylesheet"
-        />
-    </head>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Click RPG</title>
+		<link rel="stylesheet" href="index.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
 
-    <body>
-        <div id="wrapper">
-            <div id="gameArea">
-                <div id="userArea">
-                    <div id="title">
-                        <h1>Welcome to the Click Game!</h1>
-                        <h2 id="subtitle">
-                            How many can you click before it's too late?
-                        </h2>
-                        <h3 id="gameOver">Game over!</h3>
-                    </div>
-                    <form id="submissionInputForm">
-                        <input type="text"
-                            id="nameInput"
-                            placeholder="Name for your submission"
-                        >
-                        <button id="submitScore" class="button">
-                            Save your score!
-                        </button>
-                    </form>
-                    <div id="timerArea">
-                        <h3 id="timer">Time left</h3>
-                    </div>
-                    <hr />
-                    <div id="buttonArea">
-                        <button
-                            id="button"
-                            class="button"
-                        >
-                            <span id="currentCount"
-                                >Click me to start playing!</span
-                            >
-                        </button>
-                        <button
-                            id="replay"
-                            class="button"
-                        >
-                            Play again?
-                        </button>
-                    </div>
-                </div>
-                <div id="scoreArea">
-                    <h2 id="scoreTitle">High Scores:</h2>
-                    <ul id="scoreList">
-                        <li id="score">Julian: 99999</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+	<body>
+		<div id="wrapper">
+			<div id="gameArea">
+				<div id="userArea">
+					<div id="title">
+						<h1>Welcome to the Click Game!</h1>
+						<h2 id="subtitle">
+							How many can you click before it's too late?
+						</h2>
+						<h3 id="gameOver">Game over!</h3>
+					</div>
+					<form id="submissionInputForm">
+						<input
+							type="text"
+							id="nameInput"
+							placeholder="Name for your submission"
+						/>
+						<button id="submitScore" class="button">
+							Save your score!
+						</button>
+					</form>
+					<div id="timerArea">
+						<h3 id="timer">Time left</h3>
+					</div>
+					<hr />
+					<div id="buttonArea">
+						<button id="button" class="button">
+							<span id="currentCount"
+								>Click me to start playing!</span
+							>
+						</button>
+						<button id="replay" class="button">Play again?</button>
+					</div>
+				</div>
+				<div id="scoreArea">
+					<h2 id="scoreTitle">High Scores:</h2>
+					<ul id="scoreList">
+						<li id="score"></li>
+						<li id="score2"></li>
+						<li id="score3"></li>
+					</ul>
+				</div>
+			</div>
+		</div>
 
-        <script src="script.js" defer></script>
-    </body>
+		<script src="script.js" defer></script>
+	</body>
 </html>

@@ -1,6 +1,6 @@
 //  game variables
 let count = 0
-let secondsPerRound = 10
+let secondsPerRound = 5
 
 // dom selectors
 const gameAreaElement = document.getElementById('gameArea')
@@ -16,10 +16,13 @@ const formElement = document.getElementById('submissionInputForm')
 const replayButtonElement = document.getElementById('replay')
 const scoreAreaElement = document.getElementById('scoreArea')
 const scoreElement = document.getElementById('score')
+const score2Element = document.getElementById('score2')
+const score3Element = document.getElementById('score3')
 const submitScoreElement = document.getElementById('submitScore')
 
 //  starting message on load
 window.onload = () => {
+	getTopScoresFromStorage()
 	timerElement.innerHTML = buildFormattedTimeString() + ' until time is up!'
 	scoreAreaElement.style.display = 'none'
 
@@ -52,6 +55,28 @@ window.onload = () => {
 
 	//	high score submit form
 	formElement.addEventListener('submit', updateScores)
+}
+
+//	get highscore data from localstorage
+const getTopScoresFromStorage = () => {
+	let values = []
+	let keys = Object.keys(localStorage)
+
+	if (keys.length >= 3) {
+		for (let i = 3; i > 0; i--) {
+			values.push(JSON.parse(localStorage.getItem(keys[i - 1])))
+		}
+	} else {
+		for (let i = keys.length; i > 0; i--) {
+			values.push(JSON.parse(localStorage.getItem(keys[i - 1])))
+		}
+	}
+	let scores = {
+		keys,
+		values,
+	}
+	console.log(scores)
+	return scores
 }
 
 // parse secondsPerRound and return formatted string
@@ -135,6 +160,39 @@ const gameOver = () => {
 
 	//	show name input field and button to submit to localstorage
 	formElement.style.display = 'block'
+
+	// fetch localstorage high score data
+	let scores = getTopScoresFromStorage()
+	console.log(scores.values.length)
+	//	assign data to elements in high score list
+	switch (scores.values.length) {
+		case 0:
+			break
+		case 1:
+			scoreElement.innerHTML = `${scores.keys[0]}: ${
+				scores.values[0].score
+			} points (${buildFormattedTimeString()})`
+			break
+		case 2:
+			scoreElement.innerHTML = `${scores.keys[0]}: ${
+				scores.values[0].score
+			} points (${buildFormattedTimeString()})`
+			score2Element.innerHTML = `${scores.keys[1]}: ${
+				scores.values[1].score
+			} points (${buildFormattedTimeString()})`
+			break
+		default:
+			scoreElement.innerHTML = `${scores.keys[0]}: ${
+				scores.values[0].score
+			} points (${buildFormattedTimeString()})`
+			score2Element.innerHTML = `${scores.keys[1]}: ${
+				scores.values[1].score
+			} points (${buildFormattedTimeString()})`
+			score3Element.innerHTML = `${scores.keys[2]}: ${
+				scores.values[2].score
+			} points (${buildFormattedTimeString()})`
+			break
+	}
 }
 
 //  game start
@@ -169,8 +227,17 @@ const updateScores = (e) => {
 	e.preventDefault()
 	const username = nameInputElement.value
 
-	localStorage.setItem(`${username}`, count)
-	scoreElement.innerHTML = `${username}: ${count} (${buildFormattedTimeString()})`
+	localStorage.setItem(
+		`${username}`,
+		JSON.stringify({
+			time: secondsPerRound,
+			score: count,
+		})
+	)
+
+	score3Element.innerHTML = score2Element.innerHTML
+	score2Element.innerHTML = scoreElement.innerHTML
+	scoreElement.innerHTML = `${username}: ${count} points (${buildFormattedTimeString()})`
 }
 
 //	replay
@@ -183,7 +250,6 @@ const replay = () => {
 	buttonElement.style.display = 'block'
 	replayButtonElement.style.display = 'none'
 	formElement.style.display = 'none'
-	formElement.removeEventListener('submit', updateScores)
 	scoreAreaElement.style.display = 'none'
 
 	newGame()
