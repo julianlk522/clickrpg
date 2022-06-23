@@ -17,32 +17,49 @@
     <body>
         <div id="wrapper">
             <div id="gameArea">
-                <div id="title">
-                    <h1>Welcome to the Click Game!</h1>
-                    <h2 id="subtitle">
-                        How many can you click before it's too late?
-                    </h2>
-                    <h3 id="gameOver">Game over!</h3>
-                </div>
-                <div id="timerArea">
-                    <h3 id="timer">Time left</h3>
-                </div>
-                <hr />
-                <div id="buttonArea">
-                    <button 
-                        id="button"
-                        class="button"
-                    >
-                        <span id="currentCount"
-                            >Click me to start playing!</span
+                <div id="userArea">
+                    <div id="title">
+                        <h1>Welcome to the Click Game!</h1>
+                        <h2 id="subtitle">
+                            How many can you click before it's too late?
+                        </h2>
+                        <h3 id="gameOver">Game over!</h3>
+                    </div>
+                    <form id="submissionInputForm">
+                        <input type="text"
+                            id="nameInput"
+                            placeholder="Name for your submission"
                         >
-                    </button>
-                    <button 
-                        id="replay"
-                        class="button"
-                    >
-                        Play again?
-                    </button>
+                        <button id="submitScore" class="button">
+                            Save your score!
+                        </button>
+                    </form>
+                    <div id="timerArea">
+                        <h3 id="timer">Time left</h3>
+                    </div>
+                    <hr />
+                    <div id="buttonArea">
+                        <button
+                            id="button"
+                            class="button"
+                        >
+                            <span id="currentCount"
+                                >Click me to start playing!</span
+                            >
+                        </button>
+                        <button
+                            id="replay"
+                            class="button"
+                        >
+                            Play again?
+                        </button>
+                    </div>
+                </div>
+                <div id="scoreArea">
+                    <h2 id="scoreTitle">High Scores:</h2>
+                    <ul id="scoreList">
+                        <li id="score">Julian: 99999</li>
+                    </ul>
                 </div>
             </div>
         </div>

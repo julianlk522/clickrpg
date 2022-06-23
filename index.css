@@ -39,11 +39,16 @@ html {
     color: var(--lemonChiffon);
     border-radius: 2rem;
     display: flex;
+    justify-content: space-evenly;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+#userArea {
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 }
 
 #title {
@@ -99,16 +104,60 @@ hr {
     border-radius: 0.5rem;
     background-color: var(--lemonChiffon);
     color: var(--indigo);
-    tranform: scale(1);
-    transition: 0.2s ease;
+    
 }
 
 .button:hover {
     cursor: pointer;
-    background-color: var(--gold);
-    box-shadow: 0 0 5px var(--gold), 0 0 20px var(--gold);
+}
+
+#submissionInputForm {
+    display: none;
+    padding: 2rem;
+    margin: 2rem;
+}
+
+#nameInput {
+    width: 12rem;
+    margin: 0 1rem;
+    padding: 0.25rem;
+    background: none;
+    border: none;
+    background-color: var(--lemonChiffon);
+    color: var(--indigo);
+    border-radius: 0.5rem;
+    cursor: input;
+}
+
+#submitScore {
+    margin: 0 1rem;
+    transform: scale(0.7);
 }
 
 #replay {
     display: none;
+}
+
+#button, #replay {
+    tranform: scale(1);
+    transition: 0.2s ease;
+}
+
+#button:hover, #replay:hover {
+    background-color: var(--gold);
+    box-shadow: 0 0 5px var(--gold), 0 0 20px var(--gold);
+}
+
+/* Scores Area  */
+
+#scoreArea {
+    padding-top: 6rem;
+}
+
+#scoreTitle {
+    margin: 2rem;
+}
+
+#scoreList li {
+    list-style: none;
 }
